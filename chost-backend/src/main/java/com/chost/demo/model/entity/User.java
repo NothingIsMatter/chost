@@ -26,7 +26,7 @@ public class User {
     private String email;
 
     @JsonManagedReference
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_files",
             joinColumns = { @JoinColumn(name = "user_id") },
@@ -44,7 +44,7 @@ public class User {
     @Column
     private String providerId;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner",cascade = CascadeType.ALL)
     @JsonManagedReference
     @JsonView({View.ME.class,View.FULLINFORMATION.class})
     private List<File> ownedFiles = new ArrayList<>();

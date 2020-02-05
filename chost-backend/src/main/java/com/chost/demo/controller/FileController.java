@@ -37,7 +37,7 @@ public class FileController {
 
     @PostMapping(value = "remove")
     @JsonView({View.FULLINFORMATION.class})
-    //@PreAuthorize("#user.login.equals(fileRepository.getOne(#file.id).owner)")
+    @PreAuthorize("@authComponentImpl.isOwnerOf(#id, #user)")
     public ResponseEntity<?> removeFile(@AuthenticationPrincipal UserWrapper user, @RequestBody String id) throws NoSuchElementException {
         File file = fileRepository.findById(Integer.parseInt(id)).orElseThrow(()-> new NoSuchElementException("No such file with id "+id));
         fileService.removeFile(file);
