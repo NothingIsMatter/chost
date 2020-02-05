@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2e046d2-9dce-4f62-9091-2c91b0dd8122" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +116,7 @@
       <workItem from="1580518456189" duration="2209000" />
       <workItem from="1580556747814" duration="8223000" />
       <workItem from="1580820525505" duration="1533000" />
-      <workItem from="1580918119779" duration="9718000" />
+      <workItem from="1580918119779" duration="10334000" />
     </task>
     <servers />
   </component>
