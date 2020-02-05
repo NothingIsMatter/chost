@@ -16,7 +16,12 @@ import java.util.List;
 public class File{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView({View.FULLINFORMATION.class})
     private int id;
+
+    @Column
+    @JsonView(View.FULLINFORMATION.class)
+    private String price;
     @Column(nullable = false)
     @JsonView(View.FULLINFORMATION.class)
     private String name;
@@ -32,4 +37,10 @@ public class File{
     @Column
     @JsonView(View.FULLINFORMATION.class)
     private String iconPath;
+
+    @ManyToOne
+    @JoinColumn(name="owner_id")
+    @JsonView(View.FULLINFORMATION.class)
+    @JsonBackReference
+    private User owner;
 }

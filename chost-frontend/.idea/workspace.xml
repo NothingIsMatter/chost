@@ -2,10 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2e046d2-9dce-4f62-9091-2c91b0dd8122" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../chost-backend/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/.idea/dataSources/b4225e43-6821-4610-8fcf-ce764c4a1c6a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/.idea/dataSources/b4225e43-6821-4610-8fcf-ce764c4a1c6a.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/.idea/libraries/Maven__com_nimbusds_nimbus_jose_jwt_8_5.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../chost-backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/chost-backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/chost-backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/controller/FileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/dto/jsonview/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/dto/jsonview/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/File.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/security/oauth2/OAuth2UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/security/oauth2/OAuth2UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/service/FileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/service/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/service/FileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/controller/FileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/controller/FileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/model/dto/jsonview/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/model/dto/jsonview/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/model/entity/File.class" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/model/entity/File.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/model/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/model/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/security/oauth2/OAuth2UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/security/oauth2/OAuth2UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/service/FileService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/service/FileService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/service/FileServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/target/classes/com/chost/demo/service/FileServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/027bc9ba6995deae1eade4c7069fbbda.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/027bc9ba6995deae1eade4c7069fbbda.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/536c1c36e06f700fd8b4a00dac7ff2de.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/536c1c36e06f700fd8b4a00dac7ff2de.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/f042889d7dddc979ffc6594433aef8d6.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/f042889d7dddc979ffc6594433aef8d6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/0397ddaca439df0ca7bac51486e95c4c.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/0397ddaca439df0ca7bac51486e95c4c.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/16c8dd76c05d4121b8945aab2d29e7d6.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/16c8dd76c05d4121b8945aab2d29e7d6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5730ffe688ce8bce072a649f52c4e026.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5730ffe688ce8bce072a649f52c4e026.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c240f37fe31ec715e09255f7f169b430.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c240f37fe31ec715e09255f7f169b430.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d7e8c357f11a85e520f4eb310d86c81c.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d7e8c357f11a85e520f4eb310d86c81c.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f026cb88105e07587a341da038ec988d.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f026cb88105e07587a341da038ec988d.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/fc26b04181da41a8eb34b24fc87a20cf.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/fc26b04181da41a8eb34b24fc87a20cf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HomePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomePage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +146,7 @@
       <workItem from="1580518456189" duration="2209000" />
       <workItem from="1580556747814" duration="8223000" />
       <workItem from="1580820525505" duration="1533000" />
+      <workItem from="1580918119779" duration="7290000" />
     </task>
     <servers />
   </component>

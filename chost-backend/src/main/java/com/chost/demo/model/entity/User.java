@@ -1,4 +1,5 @@
 package com.chost.demo.model.entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -11,17 +12,9 @@ import com.chost.demo.model.dto.jsonview.View;
 
 @Entity
 public class User {
-
-    public List<File> getFiles() {
-        return files;
-    }
-
-    public void setFiles(List<File> files) {
-        this.files = files;
-    }
-
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
+    @JsonView({View.ME.class,View.FULLINFORMATION.class})
     private int id;
     @Column(unique = true)
     @JsonView({View.ME.class,View.FULLINFORMATION.class})
@@ -33,7 +26,7 @@ public class User {
     private String email;
 
     @JsonManagedReference
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany
     @JoinTable(
             name = "user_files",
             joinColumns = { @JoinColumn(name = "user_id") },
@@ -51,13 +44,10 @@ public class User {
     @Column
     private String providerId;
 
-    public String getProviderId() {
-        return providerId;
-    }
-
-    public void setProviderId(String providerId) {
-        this.providerId = providerId;
-    }
+    @OneToMany(mappedBy = "owner")
+    @JsonManagedReference
+    @JsonView({View.ME.class,View.FULLINFORMATION.class})
+    private List<File> ownedFiles = new ArrayList<>();
 
     @JsonView({View.ME.class,View.FULLINFORMATION.class})
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
@@ -65,12 +55,29 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Collection<Role> roles;
 
+    public List<File> getOwnedFiles() {
+        return ownedFiles;
+    }
+
+    public void setOwnedFiles(List<File> ownedFiles) {
+        this.ownedFiles = ownedFiles;
+    }
+
     public int getId() {
         return id;
     }
 
+
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
     }
 
     public String getLogin() {
@@ -116,6 +123,13 @@ public class User {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+    public List<File> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<File> files) {
+        this.files = files;
     }
 
 

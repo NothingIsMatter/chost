@@ -1,6 +1,7 @@
 package com.chost.demo.service;
 
 import com.chost.demo.controller.exceptions.FileStorageException;
+import com.chost.demo.controller.exceptions.NoSuchElementException;
 import com.chost.demo.model.dto.UploadFileRequest;
 import com.chost.demo.model.entity.File;
 import com.chost.demo.model.entity.User;
@@ -57,7 +58,17 @@ public class FileServiceImpl implements FileService{
             }
         }
         user.getFiles().add(fileEntity);
+        fileEntity.setOwner(user);
         userRepository.save(user);
-        fileRepository.save(fileEntity);
+
+    }
+
+    @Override
+    public void removeFile(File file)  {
+        file.getUsers().forEach((u)->{
+            u.getFiles().remove(file);
+        });
+        file.getOwner().getOwnedFiles().remove(file);
+            fileRepository.delete(file);
     }
 }
