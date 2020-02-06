@@ -29,8 +29,8 @@ public class FileController {
 
     @PostMapping("upload")
     @Secured("ROLE_USER")
-    public ResponseEntity<?> uploadFile(@AuthenticationPrincipal UserWrapper user, @RequestParam("name") String name,@RequestParam("title") MultipartFile img,@RequestParam("files") MultipartFile[] files,@RequestParam("desc") String description){
-        UploadFileRequest uploadFileRequest = new UploadFileRequest(name,description,files,img);
+    public ResponseEntity<?> uploadFile(@AuthenticationPrincipal UserWrapper user, @RequestParam("name") String name,@RequestParam("title") MultipartFile img,@RequestParam("files") MultipartFile[] files,@RequestParam("desc") String description,@RequestParam(value = "price",required = false) String price){
+        UploadFileRequest uploadFileRequest = new UploadFileRequest(0,name,description,price,files,img);
         fileService.saveFile(uploadFileRequest,userRepository.findByLogin(user.getLogin()).get());
         return  ResponseEntity.ok().body("File successfully uploaded!");
     }
@@ -42,6 +42,14 @@ public class FileController {
         File file = fileRepository.findById(Integer.parseInt(id)).orElseThrow(()-> new NoSuchElementException("No such file with id "+id));
         fileService.removeFile(file);
         return ResponseEntity.ok().body("File "+file.getName()+" deleted!");
+    }
+    @PostMapping(value = "update")
+    @JsonView({View.FULLINFORMATION.class})
+    @PreAuthorize("@authComponentImpl.isOwnerOf(#id, #user)")
+    public ResponseEntity<?> update(@AuthenticationPrincipal UserWrapper user, @RequestParam("name") String name,@RequestParam("title") MultipartFile img,@RequestParam("files") MultipartFile[] files,@RequestParam("desc") String description,@RequestParam("price") String price,@RequestParam("id") int id) throws NoSuchElementException {
+        UploadFileRequest uploadFileRequest = new UploadFileRequest(id,name,description,price,files,img);
+        File file = fileService.updateFile(userRepository.getOne(user.getId()), uploadFileRequest);
+        return new ResponseEntity<File>(file,HttpStatus.OK);
     }
 
 }

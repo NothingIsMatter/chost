@@ -8,4 +8,6 @@ import com.chost.demo.model.entity.User;
 public interface FileService {
     void saveFile(UploadFileRequest request, User user);
     void removeFile(File file) throws NoSuchElementException;
+
+    File updateFile(User user,UploadFileRequest request);
 }

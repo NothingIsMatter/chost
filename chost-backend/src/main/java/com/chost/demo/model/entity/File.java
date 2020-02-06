@@ -6,13 +6,16 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
+@EqualsAndHashCode(of = "id")
 public class File{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,7 +24,7 @@ public class File{
 
     @Column
     @JsonView(View.FULLINFORMATION.class)
-    private String price;
+    private BigInteger price;
     @Column(nullable = false)
     @JsonView(View.FULLINFORMATION.class)
     private String name;
