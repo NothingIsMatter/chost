@@ -7,8 +7,11 @@ import com.chost.demo.model.entity.File;
 import com.chost.demo.model.entity.User;
 import com.chost.demo.model.repository.FileRepository;
 import com.chost.demo.model.repository.UserRepository;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -28,14 +31,16 @@ import java.util.UUID;
 public class FileServiceImpl implements FileService{
     @Autowired
     private FileRepository fileRepository;
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileServiceImpl.class);
     @Value("${app.upload.path}")
     private String fileUploadingPath;
 
     @Override
     public File updateFile(User user,UploadFileRequest request) {
-
-        File prev = fileRepository.findById(request.getId()).orElseThrow(()-> new NoSuchElementException("Cant find file with name "+request.getName()+ " and id "+ request.getId()));
+        LOGGER.info("File updating request file id : "+request.getId()+" owner id "+user.getId());
+        File prev = fileRepository.findById(request.getId()).orElseThrow(()-> {
+            LOGGER.error(" Error during file updating: Can`t find file with ID = "+request.getId());
+           return new NoSuchElementException("Cant find file with name "+request.getName()+ " and id "+ request.getId());});
         prev.setName(request.getName());
         prev.setDescription(request.getDescription());
         prev.setPrice(new BigInteger(request.getPrice()));
@@ -44,10 +49,13 @@ public class FileServiceImpl implements FileService{
             prev.getFilesNames().add(saveFileToDir(f));
         }
         fileRepository.save(prev);
+        LOGGER.info("Successfully updated file with ID : "+ request.getId());
         return prev;
     }
 
-    private String saveFileToDir(MultipartFile file) throws FileStorageException{
+    private String saveFileToDir( MultipartFile file) throws FileStorageException{
+if (file == null) throw new FileStorageException("File is null!");
+        LOGGER.info("Starting saving file  : "+file.getOriginalFilename());
 
         try {
             String newFileName = UUID.randomUUID().toString() + "." + file.getOriginalFilename();
@@ -55,6 +63,7 @@ public class FileServiceImpl implements FileService{
             Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
             return newFileName;
         } catch (IOException exc){
+            LOGGER.error("Error during saving file :"+file.getOriginalFilename());
             throw new FileStorageException("Cant save file! File name "+file.getOriginalFilename());
         }
     }
@@ -77,10 +86,12 @@ public class FileServiceImpl implements FileService{
 
     @Override
     public void removeFile(File file)  {
+        LOGGER.info("Request to remove file with id = "+file.getId());
         file.getUsers().forEach((u)->{
             u.getFiles().remove(file);
         });
         file.getOwner().getOwnedFiles().remove(file);
-            fileRepository.delete(file);
+        fileRepository.delete(file);
+        LOGGER.info("File "+file.getId()+" successfully removed ");
     }
 }

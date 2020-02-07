@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 @Data
-    @AllArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 public class UploadFileRequest {
     private int id;

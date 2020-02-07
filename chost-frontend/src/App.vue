@@ -2,10 +2,12 @@
   <v-app>
   <v-toolbar dense color="deep-orange lighten-3"  >
     <v-toolbar-title><v-btn text to="/"> <v-icon>face</v-icon> Chost</v-btn></v-toolbar-title>
+    <v-btn to="/fileUploading" color="primary" text>Upload file</v-btn>
     <v-spacer></v-spacer>
       <v-btn  v-if="auth" to="/home" color="primary">{{ user.login }}</v-btn>
       <v-btn  v-if="auth" @click="logout" color="error">Logout</v-btn>
       <v-btn  v-else to="/auth" prepend-icon="contact_mail" color="primary">Auth</v-btn>
+
   </v-toolbar>
     <v-content>
     <router-view></router-view>
