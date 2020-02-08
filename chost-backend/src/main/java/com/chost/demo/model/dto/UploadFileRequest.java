@@ -15,4 +15,5 @@ public class UploadFileRequest {
     private String price;
     private MultipartFile[] files;
     private MultipartFile icon;
+    private String[] whiteList;
 }

@@ -79,6 +79,21 @@
       </span>
                                             </template>
                                         </v-file-input>
+                                        <v-combobox
+                                                v-if="whitelist"
+                                                v-model="whitelist"
+                                                :items="whitelist"
+                                                label="Enter login of user that will be able to buy your post"
+                                                multiple
+                                        ></v-combobox>
+                                        <v-combobox
+                                                v-if="whitelist"
+                                                :items="whitelist"
+                                                readonly
+                                                label="List:"
+                                                multiple
+                                                chips
+                                        ></v-combobox>
                                     </v-form>
 
                                 </v-card-text>
@@ -107,6 +122,10 @@
         },
         data : function () {
             return{
+                whitelist:null,
+                select:[],
+                items:[],
+                whiteListed:false,
                 name:this.file.name,
                 description:this.file.description,
                 nameRules:[
@@ -122,6 +141,9 @@
         },
         mounted: function() {
             alert(JSON.stringify(this.file))
+            this.whitelist = this.file.whiteList.map(function (value) {
+                return value.login
+            })
         },
         methods:{
             change:function(){
@@ -152,6 +174,9 @@
                     formData.append("price",this.price)
                     formData.append("id",this.file.id)
                     formData.append("desc",this.description)
+                    if (this.select.length>0){
+                        formData.append("whitelist",this.select)
+                    }
                     this.$http.post('http://localhost:9000/file/update',formData,
                         {
                             headers: {

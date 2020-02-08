@@ -7,7 +7,6 @@ import com.chost.demo.model.entity.File;
 import com.chost.demo.model.entity.User;
 import com.chost.demo.model.repository.FileRepository;
 import com.chost.demo.model.repository.UserRepository;
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
@@ -31,6 +30,8 @@ import java.util.UUID;
 public class FileServiceImpl implements FileService{
     @Autowired
     private FileRepository fileRepository;
+    @Autowired
+    private UserRepository userRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(FileServiceImpl.class);
     @Value("${app.upload.path}")
     private String fileUploadingPath;
@@ -44,6 +45,11 @@ public class FileServiceImpl implements FileService{
         prev.setName(request.getName());
         prev.setDescription(request.getDescription());
         prev.setPrice(new BigInteger(request.getPrice()));
+        if (request.getWhiteList()!=null){
+            for (String login: request.getWhiteList()) {
+                prev.getWhiteList().add(userRepository.findByLogin(login).orElseThrow(()->new NoSuchElementException("Cant find user with login = "+login)));
+            }
+        }
         prev.setIconPath(saveFileToDir(request.getIcon()));
         for (MultipartFile f : request.getFiles()) {
             prev.getFilesNames().add(saveFileToDir(f));
@@ -73,6 +79,11 @@ if (file == null) throw new FileStorageException("File is null!");
         fileEntity.setDescription(uploadFileRequest.getDescription());
         fileEntity.setName(uploadFileRequest.getName());
         fileEntity.getUsers().add(user);
+        if (uploadFileRequest.getWhiteList()!=null){
+            for (String login: uploadFileRequest.getWhiteList()) {
+                fileEntity.getWhiteList().add(userRepository.findByLogin(login).orElseThrow(()->new NoSuchElementException("Cant find user with login = "+login)));
+            }
+        }
         MultipartFile icon = uploadFileRequest.getIcon();
         fileEntity.setIconPath(saveFileToDir(icon));
         for (MultipartFile  file : uploadFileRequest.getFiles()) {

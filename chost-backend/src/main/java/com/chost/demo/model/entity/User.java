@@ -35,6 +35,24 @@ public class User {
     @JsonView(View.FULLINFORMATION.class)
     private List<File> files = new ArrayList<>();
 
+    @JsonManagedReference
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_whitelist_files",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "file_id") }
+    )
+    @JsonView(View.FULLINFORMATION.class)
+    private List<File> openToBuyFiles = new ArrayList<>();
+
+    public List<File> getOpenToBuyFiles() {
+        return openToBuyFiles;
+    }
+
+    public void setOpenToBuyFiles(List<File> openToBuyFiles) {
+        this.openToBuyFiles = openToBuyFiles;
+    }
+
     @Column
     @JsonView({View.ME.class,View.FULLINFORMATION.class})
     private String name;

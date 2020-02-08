@@ -70,6 +70,23 @@
       </span>
                                             </template>
                                         </v-file-input>
+                                        <v-checkbox v-model="whiteListed" label="WhiteListed?"></v-checkbox>
+                                        <v-combobox
+                                                v-if="whiteListed"
+                                                v-model="select"
+                                                :items="items"
+                                                label="Enter login of user that will be able to buy your post(Press ENTER to apply)"
+                                                multiple
+                                        ></v-combobox>
+                                        <v-combobox
+                                                v-if="whiteListed"
+                                                v-model="select"
+                                                :items="items"
+                                                readonly
+                                                chips
+                                                label="Users:"
+                                                multiple
+                                        ></v-combobox>
                                     </v-form>
 
                                 </v-card-text>
@@ -95,6 +112,9 @@
         name: "FileLoadingPage",
         data : function () {
             return{
+                items:[],
+                select:[],
+                whiteListed:'',
                 name:'',
                 description:'',
                 nameRules:[
@@ -132,6 +152,9 @@
                     }
                     formData.append("name",this.name)
                     formData.append("desc",this.description)
+                    if (this.select.length>0){
+                        formData.append("whitelist",this.select)
+                    }
                     this.$http.post('http://localhost:9000/file/upload',formData,
                         {
                             headers: {

@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2e046d2-9dce-4f62-9091-2c91b0dd8122" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/controller/FileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/dto/UploadFileRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/dto/UploadFileRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/File.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/security/jwt/TokenAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/security/jwt/TokenAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/security/oauth2/OAuth2AuthenticationSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/security/oauth2/OAuth2AuthenticationSuccessHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/service/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/service/FileServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FileLoadingPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FileLoadingPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UpdateFileComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpdateFileComponent.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +128,7 @@
       <workItem from="1580820525505" duration="1533000" />
       <workItem from="1580918119779" duration="10336000" />
       <workItem from="1581009385871" duration="4736000" />
-      <workItem from="1581098489114" duration="1029000" />
+      <workItem from="1581098489114" duration="4761000" />
     </task>
     <servers />
   </component>
