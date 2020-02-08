@@ -35,4 +35,5 @@ public class UserController {
     public User about(@AuthenticationPrincipal UserWrapper user){
         return userRepository.findByLogin(user.getLogin()).get();
     }
+
 }

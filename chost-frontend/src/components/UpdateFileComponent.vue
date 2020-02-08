@@ -88,6 +88,7 @@
                                         ></v-combobox>
                                         <v-combobox
                                                 v-if="whitelist"
+                                                v-model="whitelist"
                                                 :items="whitelist"
                                                 readonly
                                                 label="List:"

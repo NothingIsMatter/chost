@@ -4,6 +4,7 @@ import com.chost.demo.controller.exceptions.NoSuchElementException;
 import com.chost.demo.model.dto.UploadFileRequest;
 import com.chost.demo.model.dto.jsonview.View;
 import com.chost.demo.model.entity.File;
+import com.chost.demo.model.entity.User;
 import com.chost.demo.model.repository.FileRepository;
 import com.chost.demo.model.repository.UserRepository;
 import com.chost.demo.model.wrappers.UserWrapper;
@@ -17,6 +18,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/file/")
@@ -52,4 +55,9 @@ public class FileController {
         return new ResponseEntity<File>(file,HttpStatus.OK);
     }
 
+    @GetMapping("/marketplace")
+    @Secured("ROLE_USER")
+    public List<File> marketplace(@AuthenticationPrincipal UserWrapper userWrapper){
+        return fileService.getOpenFiles(userRepository.findById(userWrapper.getId()).get());
+    }
 }

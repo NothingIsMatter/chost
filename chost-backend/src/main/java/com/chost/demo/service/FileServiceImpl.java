@@ -22,7 +22,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -79,11 +81,7 @@ if (file == null) throw new FileStorageException("File is null!");
         fileEntity.setDescription(uploadFileRequest.getDescription());
         fileEntity.setName(uploadFileRequest.getName());
         fileEntity.getUsers().add(user);
-        if (uploadFileRequest.getWhiteList()!=null){
-            for (String login: uploadFileRequest.getWhiteList()) {
-                fileEntity.getWhiteList().add(userRepository.findByLogin(login).orElseThrow(()->new NoSuchElementException("Cant find user with login = "+login)));
-            }
-        }
+
         MultipartFile icon = uploadFileRequest.getIcon();
         fileEntity.setIconPath(saveFileToDir(icon));
         for (MultipartFile  file : uploadFileRequest.getFiles()) {
@@ -91,6 +89,13 @@ if (file == null) throw new FileStorageException("File is null!");
         }
         user.getFiles().add(fileEntity);
         fileEntity.setOwner(user);
+        if (uploadFileRequest.getWhiteList()!=null){
+            for (String login: uploadFileRequest.getWhiteList()) {
+                User e = userRepository.findByLogin(login).orElseThrow(() -> new NoSuchElementException("Cant find user with login = " + login));
+                fileEntity.getWhiteList().add(e);
+                e.getOpenToBuyFiles().add(fileEntity);
+            }
+        }
         fileRepository.save(fileEntity);
 
     }
@@ -102,7 +107,18 @@ if (file == null) throw new FileStorageException("File is null!");
             u.getFiles().remove(file);
         });
         file.getOwner().getOwnedFiles().remove(file);
+        file.getWhiteList().forEach(u->{
+            u.getOpenToBuyFiles().remove(file);
+        });
         fileRepository.delete(file);
         LOGGER.info("File "+file.getId()+" successfully removed ");
     }
+
+    @Override
+    public List<File> getOpenFiles(User forUser) {
+       return fileRepository.findAll().stream().filter(file -> {
+            return file.getWhiteList().contains(forUser)||file.getWhiteList().size()>0 || file.getOwner()!=forUser;
+        }).collect(Collectors.toList());
+    }
+
 }

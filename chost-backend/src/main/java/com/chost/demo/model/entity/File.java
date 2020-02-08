@@ -34,16 +34,16 @@ public class File{
     @ElementCollection
     @JsonView(View.FULLINFORMATION.class)
     private List<String> filesNames = new ArrayList<>();
-    @ManyToMany(mappedBy = "openToBuyFiles")
+    @ManyToMany(mappedBy = "files")
     @JsonBackReference
     @JsonView({View.ME.class,View.FULLINFORMATION.class})
     private List<User> users = new ArrayList<>();
     @Column
     @JsonView(View.FULLINFORMATION.class)
     private String iconPath;
-    @ManyToMany
-    @JsonView({View.FULLINFORMATION.class,View.ME.class})
+    @ManyToMany(mappedBy = "openToBuyFiles")
     @JsonManagedReference
+    @JsonView({View.FULLINFORMATION.class})
     private List<User> whiteList = new ArrayList<>();
     @ManyToOne
     @JoinColumn(name="owner_id")

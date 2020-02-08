@@ -11,10 +11,12 @@ import RegisterPage from "./components/RegisterPage";
 import VueResource from 'vue-resource'
 import HomePage from "./components/HomePage";
 import FileLoadingPage from "./components/FileLoadingPage";
+import Marketplace from "./components/Marketplace";
 Vue.use(VueRouter)
 
 const routes = [
   {path: '/register', component: RegisterPage},
+  {path: '/marketplace', component: Marketplace},
   {path: '*', component: HelloWorld},
   {path: '/fileUploading', component: FileLoadingPage},
   {path: '/auth', component: LoginPage},
