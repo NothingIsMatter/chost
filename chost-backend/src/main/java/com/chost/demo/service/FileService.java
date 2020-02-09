@@ -1,5 +1,6 @@
 package com.chost.demo.service;
 
+import com.chost.demo.controller.exceptions.BalanceException;
 import com.chost.demo.controller.exceptions.NoSuchElementException;
 import com.chost.demo.model.dto.UploadFileRequest;
 import com.chost.demo.model.entity.File;
@@ -13,5 +14,5 @@ public interface FileService {
     List<File> getOpenFiles(User forUser);
     File updateFile(User user,UploadFileRequest request);
 
-    void buyFile(User user, File file);
+    void buyFile(User user, File file) throws BalanceException;
 }

@@ -5,7 +5,8 @@
     <v-btn to="/fileUploading" color="primary" text>Upload file</v-btn>
     <v-btn to="/marketplace" color="primary" text>Marketplace</v-btn>
     <v-spacer></v-spacer>
-      <v-btn  v-if="auth" to="/home" color="primary">{{ user.login }}</v-btn>
+    <h3  v-if="auth" >Balance: {{ user.balance }}</h3>
+    <v-btn  v-if="auth" to="/home" color="primary">{{ user.login }}</v-btn>
       <v-btn  v-if="auth" @click="logout" color="error">Logout</v-btn>
       <v-btn  v-else to="/auth" prepend-icon="contact_mail" color="primary">Auth</v-btn>
 
@@ -43,6 +44,9 @@ export default {
   mounted: function () {
     eventBus.$on('lout',()=>{
       this.logout()
+    }),
+    eventBus.$on('balance',(value)=>{
+      this.user.balance = this.user.balance - value;
     });
     if (localStorage.getItem('token')!=null) {
       this.$http.get('http://localhost:9000/user/me', {

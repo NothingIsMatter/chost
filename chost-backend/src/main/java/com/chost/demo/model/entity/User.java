@@ -1,9 +1,12 @@
 package com.chost.demo.model.entity;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
+
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -16,35 +19,26 @@ import lombok.EqualsAndHashCode;
 public class User {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
-    @JsonView({View.ME.class,View.FULLINFORMATION.class})
+    @JsonView({View.FULLINFORMATION.class, View.ABOUT.class})
     private int id;
     @Column(unique = true)
-    @JsonView({View.ME.class,View.FULLINFORMATION.class})
+    @JsonView({View.ME.class,View.FULLINFORMATION.class,View.ABOUT.class})
     private String login;
     @Column
     private String password;
     @Column(unique = true)
-    @JsonView({View.ME.class,View.FULLINFORMATION.class})
+    @JsonView({View.ME.class,View.FULLINFORMATION.class,View.ABOUT.class})
     private String email;
 
     @JsonManagedReference
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "user_files",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "file_id") }
-    )
+    @JoinTable(name = "user_files", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = { @JoinColumn(name = "file_id") })
     @JsonView({View.ABOUT.class})
     private List<File> files = new ArrayList<>();
 
-
     @JsonBackReference
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "user_whitelist_files",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "file_id") }
-    )
+    @JoinTable(name = "user_whitelist_files", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {@JoinColumn(name = "file_id")})
     @JsonView({View.MARKETPLACE.class})
     private List<File> openToBuyFiles = new ArrayList<>();
 
@@ -57,17 +51,28 @@ public class User {
     }
 
     @Column
-    @JsonView({View.ME.class,View.FULLINFORMATION.class})
+    @JsonView({View.ME.class,View.FULLINFORMATION.class,View.ABOUT.class})
     private String name;
     @Column
-    @JsonView({View.ME.class,View.FULLINFORMATION.class})
+    @JsonView({View.ME.class,View.FULLINFORMATION.class,View.ABOUT.class})
     private String imageUrl;
     @Column
     private String providerId;
+    @Column
+    @JsonView({View.ME.class,View.FULLINFORMATION.class,View.ABOUT.class})
+    private BigInteger balance = new BigInteger("600");
+
+    public BigInteger getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigInteger balance) {
+        this.balance = balance;
+    }
 
     @OneToMany(mappedBy = "owner",cascade = CascadeType.ALL)
     @JsonManagedReference
-    @JsonView({View.ME.class,View.FULLINFORMATION.class})
+    @JsonView({View.ME.class,View.FULLINFORMATION.class,View.ABOUT.class})
     private List<File> ownedFiles = new ArrayList<>();
 
     @JsonView({View.ME.class,View.FULLINFORMATION.class})

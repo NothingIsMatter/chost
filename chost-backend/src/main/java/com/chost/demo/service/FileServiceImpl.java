@@ -1,5 +1,6 @@
 package com.chost.demo.service;
 
+import com.chost.demo.controller.exceptions.BalanceException;
 import com.chost.demo.controller.exceptions.FileStorageException;
 import com.chost.demo.controller.exceptions.NoSuchElementException;
 import com.chost.demo.model.dto.UploadFileRequest;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.file.Files;
@@ -62,7 +64,11 @@ public class FileServiceImpl implements FileService{
     }
 
     @Override
-    public void buyFile(User user, File file) {
+    @Transactional
+    public void buyFile(User user, File file) throws BalanceException {
+        if (user.getBalance().compareTo(file.getPrice())==-1) throw new BalanceException();
+        user.setBalance(user.getBalance().min(file.getPrice()));
+        file.getOwner().setBalance(file.getOwner().getBalance().add(file.getPrice()));
         file.getUsers().add(user);
         user.getFiles().add(file);
         file.getWhiteList().remove(user);
@@ -90,6 +96,7 @@ if (file == null) throw new FileStorageException("File is null!");
         fileEntity.setDescription(uploadFileRequest.getDescription());
         fileEntity.setName(uploadFileRequest.getName());
         fileEntity.getUsers().add(user);
+        fileEntity.setPrice(new BigInteger(uploadFileRequest.getPrice()));
 
         MultipartFile icon = uploadFileRequest.getIcon();
         fileEntity.setIconPath(saveFileToDir(icon));

@@ -1,5 +1,6 @@
 package com.chost.demo.controller;
 
+import com.chost.demo.controller.exceptions.BalanceException;
 import com.chost.demo.controller.exceptions.NoSuchElementException;
 import com.chost.demo.model.dto.UploadFileRequest;
 import com.chost.demo.model.dto.jsonview.View;
@@ -51,7 +52,7 @@ public class FileController {
     @PreAuthorize("@authComponentImpl.isOwnerOf(#id, #user)")
     public ResponseEntity<?> update(@AuthenticationPrincipal UserWrapper user, @RequestParam("name") String name,@RequestParam("title") MultipartFile img,@RequestParam("files") MultipartFile[] files,@RequestParam("desc") String description,@RequestParam("price") String price,@RequestParam("id") int id,@RequestParam(value = "whitelist",required = false)String[] whiteList) throws NoSuchElementException {
         UploadFileRequest uploadFileRequest = new UploadFileRequest(id,name,description,price,files,img,whiteList);
-        File file = fileService.updateFile(userRepository.getOne(user.getId()), uploadFileRequest);
+        File file = fileService.updateFile(userRepository.findById(user.getId()).get(), uploadFileRequest);
         return new ResponseEntity<File>(file,HttpStatus.OK);
     }
 
@@ -63,7 +64,8 @@ public class FileController {
     }
     @PostMapping("/buy")
     @PreAuthorize("@authComponentImpl.canBuyFile(#fileId,#user)")
-    public ResponseEntity<?> buyFile(@AuthenticationPrincipal UserWrapper user, @RequestBody String fileId){
+    public ResponseEntity<?> buyFile(@AuthenticationPrincipal UserWrapper user, @RequestBody String fileId) throws BalanceException
+    {
         fileService.buyFile(userRepository.findById(user.getId()).get(),fileRepository.findById(Integer.parseInt(fileId)).orElseThrow(()->new NoSuchElementException("Cant file with id: "+ fileId)));
         return ResponseEntity.ok().body("File bought!");
     }

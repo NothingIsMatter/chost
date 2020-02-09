@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <v-app class="teal lighten-5">
         <v-card
                 class="mx-auto"
                 width="700"

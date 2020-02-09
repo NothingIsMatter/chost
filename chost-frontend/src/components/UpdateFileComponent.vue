@@ -184,16 +184,10 @@
                                 'Content-Type': 'multipart/form-data',
                                 'Authorization': 'Bearer '+localStorage.getItem('token')
                             }
-                        }).then( response => {
-                        console.log('Success!')
-                        console.log({response})
-                    }, err=>{
+                        }).then( response => response, err=>(
                         err,
-                            err.json().then(msg => (eventBus.$emit('lout',msg.error)))
-                        this.$router.push({path:'/auth'})
-
-
-                    }).catch(error => {
+                            err.json().then(msg => (eventBus.$emit('lout',msg.error))),
+                        this.$router.push({path:'/auth'}))).catch(error => {
                         console.log(error)
                     })
                 }

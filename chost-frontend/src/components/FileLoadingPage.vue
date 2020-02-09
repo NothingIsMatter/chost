@@ -5,6 +5,7 @@
                 <v-container
                         class="fill-height"
                         fluid
+
                 >
                     <v-row
                             align="center"
@@ -36,6 +37,7 @@
                                                 v-model="name"
                                         />
                                       <v-textarea label="Description" dense v-model="description"></v-textarea>
+                                      <v-text-field label="Price" dense v-model="price"></v-text-field>
                                         <v-file-input  label="Choose files" v-model="img" @change="change" @click:clear="clearImg"></v-file-input>
                                         <span>Preview:</span>
                                         <v-img v-if="url" :src="url" height="300" width="1000" />
@@ -124,6 +126,7 @@
                 img: null,
                 url: null,
                 valid:false,
+                price:0
             }
         },
         methods:{
@@ -152,6 +155,7 @@
                     }
                     formData.append("name",this.name)
                     formData.append("desc",this.description)
+                    formData.append("price",this.price)
                     if (this.select.length>0){
                         formData.append("whitelist",this.select)
                     }
