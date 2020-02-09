@@ -34,7 +34,7 @@ public class User {
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "file_id") }
     )
-    @JsonView({View.FULLINFORMATION.class})
+    @JsonView({View.ABOUT.class})
     private List<File> files = new ArrayList<>();
 
 
@@ -45,7 +45,7 @@ public class User {
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "file_id") }
     )
-    @JsonView({View.FULLINFORMATION.class})
+    @JsonView({View.MARKETPLACE.class})
     private List<File> openToBuyFiles = new ArrayList<>();
 
     public List<File> getOpenToBuyFiles() {

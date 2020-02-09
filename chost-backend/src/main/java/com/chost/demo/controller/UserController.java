@@ -31,9 +31,10 @@ public class UserController {
     @GetMapping("/about")
     @CrossOrigin(origins = "http://localhost:8080")
     @Secured("ROLE_USER")
-    @JsonView(View.FULLINFORMATION.class)
+    @JsonView(View.ABOUT.class)
     public User about(@AuthenticationPrincipal UserWrapper user){
-        return userRepository.findByLogin(user.getLogin()).get();
+        User user1 = userRepository.findByLogin(user.getLogin()).get();
+        return user1;
     }
 
 }

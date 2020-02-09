@@ -4,13 +4,16 @@
     <list default="true" id="b2e046d2-9dce-4f62-9091-2c91b0dd8122" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/controller/FileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/dto/jsonview/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/dto/jsonview/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/File.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/model/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/security/authcomponents/AuthComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/security/authcomponents/AuthComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/security/authcomponents/AuthComponentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/security/authcomponents/AuthComponentImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/service/FileService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/service/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../chost-backend/src/main/java/com/chost/demo/service/FileServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UpdateFileComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpdateFileComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Marketplace.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Marketplace.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +131,8 @@
       <workItem from="1581009385871" duration="4736000" />
       <workItem from="1581098489114" duration="4912000" />
       <workItem from="1581194114059" duration="1949000" />
+      <workItem from="1581199002010" duration="70000" />
+      <workItem from="1581261087786" duration="2198000" />
     </task>
     <servers />
   </component>

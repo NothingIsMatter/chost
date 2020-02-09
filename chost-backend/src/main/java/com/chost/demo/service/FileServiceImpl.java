@@ -61,6 +61,15 @@ public class FileServiceImpl implements FileService{
         return prev;
     }
 
+    @Override
+    public void buyFile(User user, File file) {
+        file.getUsers().add(user);
+        user.getFiles().add(file);
+        file.getWhiteList().remove(user);
+        user.getOpenToBuyFiles().remove(file);
+        userRepository.save(user);
+    }
+
     private String saveFileToDir( MultipartFile file) throws FileStorageException{
 if (file == null) throw new FileStorageException("File is null!");
         LOGGER.info("Starting saving file  : "+file.getOriginalFilename());
@@ -90,6 +99,7 @@ if (file == null) throw new FileStorageException("File is null!");
         user.getFiles().add(fileEntity);
         fileEntity.setOwner(user);
         if (uploadFileRequest.getWhiteList()!=null){
+            fileEntity.setWhiteListed(true);
             for (String login: uploadFileRequest.getWhiteList()) {
                 User e = userRepository.findByLogin(login).orElseThrow(() -> new NoSuchElementException("Cant find user with login = " + login));
                 fileEntity.getWhiteList().add(e);
@@ -117,7 +127,7 @@ if (file == null) throw new FileStorageException("File is null!");
     @Override
     public List<File> getOpenFiles(User forUser) {
        return fileRepository.findAll().stream().filter(file -> {
-            return file.getWhiteList().contains(forUser)||file.getWhiteList().size()>0 || file.getOwner()!=forUser;
+            return !((file.isWhiteListed()) || file.getWhiteList().contains(forUser) )&& file.getOwner()!=forUser && !file.getUsers().contains(forUser);
         }).collect(Collectors.toList());
     }
 

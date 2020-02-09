@@ -12,4 +12,6 @@ public interface FileService {
     void removeFile(File file) throws NoSuchElementException;
     List<File> getOpenFiles(User forUser);
     File updateFile(User user,UploadFileRequest request);
+
+    void buyFile(User user, File file);
 }

@@ -5,4 +5,5 @@ import com.chost.demo.model.wrappers.UserWrapper;
 
 public interface AuthComponent {
     boolean isOwnerOf(String file, UserWrapper wrapper);
+    boolean canBuyFile(String file,UserWrapper wrapper);
 }

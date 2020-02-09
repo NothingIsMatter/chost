@@ -57,7 +57,14 @@ public class FileController {
 
     @GetMapping("/marketplace")
     @Secured("ROLE_USER")
+    @JsonView(View.MARKETPLACE.class)
     public List<File> marketplace(@AuthenticationPrincipal UserWrapper userWrapper){
         return fileService.getOpenFiles(userRepository.findById(userWrapper.getId()).get());
+    }
+    @PostMapping("/buy")
+    @PreAuthorize("@authComponentImpl.canBuyFile(#fileId,#user)")
+    public ResponseEntity<?> buyFile(@AuthenticationPrincipal UserWrapper user, @RequestBody String fileId){
+        fileService.buyFile(userRepository.findById(user.getId()).get(),fileRepository.findById(Integer.parseInt(fileId)).orElseThrow(()->new NoSuchElementException("Cant file with id: "+ fileId)));
+        return ResponseEntity.ok().body("File bought!");
     }
 }

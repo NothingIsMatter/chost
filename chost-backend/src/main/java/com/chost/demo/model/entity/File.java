@@ -19,27 +19,28 @@ import java.util.List;
 public class File{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView({View.FULLINFORMATION.class})
+    @JsonView({View.FULLINFORMATION.class,View.MARKETPLACE.class,View.ABOUT.class})
     private int id;
 
     @Column
-    @JsonView(View.FULLINFORMATION.class)
+    @JsonView({View.FULLINFORMATION.class,View.MARKETPLACE.class,View.ABOUT.class})
     private BigInteger price;
     @Column(nullable = false)
-    @JsonView(View.FULLINFORMATION.class)
+    @JsonView({View.FULLINFORMATION.class,View.MARKETPLACE.class,View.ABOUT.class})
     private String name;
     @Column(length = 1000)
-    @JsonView(View.FULLINFORMATION.class)
+    @JsonView({View.FULLINFORMATION.class,View.MARKETPLACE.class,View.ABOUT.class})
     private String description;
     @ElementCollection
-    @JsonView(View.FULLINFORMATION.class)
+    @JsonView({View.FULLINFORMATION.class,View.MARKETPLACE.class,View.ABOUT.class})
     private List<String> filesNames = new ArrayList<>();
     @ManyToMany(mappedBy = "files")
     @JsonBackReference
     @JsonView({View.ME.class,View.FULLINFORMATION.class})
     private List<User> users = new ArrayList<>();
+    private boolean isWhiteListed;
     @Column
-    @JsonView(View.FULLINFORMATION.class)
+    @JsonView({View.FULLINFORMATION.class,View.MARKETPLACE.class,View.ABOUT.class})
     private String iconPath;
     @ManyToMany(mappedBy = "openToBuyFiles")
     @JsonManagedReference
@@ -47,7 +48,7 @@ public class File{
     private List<User> whiteList = new ArrayList<>();
     @ManyToOne
     @JoinColumn(name="owner_id")
-    @JsonView(View.FULLINFORMATION.class)
+    @JsonView({View.FULLINFORMATION.class,View.ABOUT.class})
     @JsonBackReference
     private User owner;
 }
